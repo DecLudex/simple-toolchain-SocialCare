@@ -20,7 +20,7 @@ var app = require('express')();
 var profileByUser = {};
 
 var watson = require('watson-developer-cloud');
-var personalityInsights = watson.personality_insights({ version: 'v2' });
+var personalityInsights = watson.personality_insights({ version: 'v3' });
 var processProfile = require('./util/process-personality-profile');
 
 // Bootstrap application settings

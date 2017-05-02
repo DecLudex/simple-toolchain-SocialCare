@@ -1,19 +1,19 @@
 declared-services:
   natural-language-classifier-service:
-    label: natural_language_classifier
+    label: Natural Language Classifier-Openjaw
     plan: standard
   personality-insights-service:
-    label: personality_insights
+    label: Personality Insights-qi
     plan: tiered
   tone-analyzer-standard:
-    label: tone_analyzer
+    label: Tone Analyzer-ue
     plan: standard
 applications:
 - services:
    - natural-language-classifier-service
    - personality-insights-service
    - tone-analyzer-service
-  name: social-customer-care
+  name: simple-toolchain-SocialCare
   command: npm start
   path: .
   memory: 512M

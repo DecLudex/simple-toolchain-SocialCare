@@ -23,13 +23,6 @@ var toneAnalyzer = watson.tone_analyzer({ version:'v3', version_date: '2016-05-1
 var classifier = watson.natural_language_classifier({ version: 'v1' });
 var classifier_id = process.env.CLASSIFIER_ID || '<classifier-id>';
 
-var alchemyLanguage = watson.alchemy_language({
-  version: 'v1',
-  api_key: process.env.ALCHEMY_API_KEY || '<api-key>'
-});
-var features = ['concepts', 'entities', 'keywords', 'taxonomy',
-                'doc-emotion', 'relations', 'doc-sentiment', 'typed-rels'].join(',');
-
 var responses = require('../data/default-responses');
 
 /**
@@ -51,25 +44,9 @@ function cleanText(text) {
 function createProcessors(text) {
   return [
     classifier.classify.bind(classifier, { text: text, classifier_id: classifier_id }),
-    alchemyLanguage.combined.bind(alchemyLanguage, { text: text, extract: features }),
     toneAnalyzer.tone.bind(toneAnalyzer, { text: text })
   ];
 }
-
-var getSentiment = function(sentiment) {
-  var score = sentiment.score || 0;
-  if (score <= -0.5) {
-    return 'Very Dissatisfied';
-  } else if (score <= -0.25) {
-    return 'Dissatisfied';
-  } else if (score <= 0.25) {
-    return 'Neutral';
-  } else if (score <= 0.5) {
-    return 'Satisfied';
-  } else if (score <= 1) {
-    return 'Very Satisfied';
-  }
-};
 
 /**
  * Processes a tweet and select a response if exists
@@ -107,7 +84,6 @@ module.exports = function processTweet(tweet, callback) {
           screen_name: 'WatsonSupport'
         }
       };
-      result.sentiment = getSentiment(result.alchemy_language.docSentiment);
       callback(null, result);
     }
   });

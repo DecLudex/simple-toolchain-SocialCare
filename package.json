@@ -1,5 +1,5 @@
 {
-  "name": "social-customer-care",
+  "name": "simple-toolchain-SocialCare",
   "version": "0.2.1",
   "description": "Starter Kit demonstrating how IBM Watson can be used to support customer care on twitter",
   "scripts": {
@@ -67,35 +67,5 @@
     "lint",
     "validate"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/watson-developer-cloud/social-customer-care.git"
-  },
-  "author": "IBM Corp.",
-  "contributors": [
-    {
-      "name": "Andrew Ayres",
-      "email": "afayres@us.ibm.com"
-    },
-    {
-      "name": "James Zhang",
-      "email": "jzhang300@us.ibm.com"
-    },
-    {
-      "name": "Zain Admani",
-      "email": "zmadmani@us.ibm.com"
-    },
-    {
-      "name": "Eva Xiaohui Luo",
-      "email": "evaluo_xhl@us.ibm.com"
-    },
-    {
-      "name": "German Attanasio Ruiz",
-      "email": "germanatt@us.ibm.com"
-    }
-  ],
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/watson-developer-cloud/social-customer-care/issues"
+  "repository": {  }
   }
-}

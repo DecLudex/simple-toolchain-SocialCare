@@ -5,9 +5,6 @@ require('./dot-env');
 
 var debug = require('debug')('scc:server');
 
-// Deployment tracking
-require('cf-deployment-tracker-client').track();
-
 var TwitterHelper = require('./util/twitter-helper');
 var tweeter = new TwitterHelper(JSON.parse(process.env.TWITTER || {}));
 
