@@ -1,19 +1,10 @@
-declared-services:
-  natural-language-classifier-service:
-    label: Natural Language Classifier-Openjaw
-    plan: standard
-  personality-insights-service:
-    label: Personality Insights-qi
-    plan: tiered
-  tone-analyzer-standard:
-    label: Tone Analyzer-ue
-    plan: standard
 applications:
 - services:
-   - natural-language-classifier-service
-   - personality-insights-service
-   - tone-analyzer-service
+   - Natural Language Classifier-Openjaw
+   - Personality Insights-qi
+   - Tone Analyzer-ue
   name: simple-toolchain-SocialCare
+  domain: mybluemix.net
   command: npm start
   path: .
   memory: 512M
