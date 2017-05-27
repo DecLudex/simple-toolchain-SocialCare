@@ -44,7 +44,7 @@ function cleanText(text) {
 function createProcessors(text) {
   return [
     classifier.classify.bind(classifier, { text: text, classifier_id: classifier_id }),
-    toneAnalyzer.tone.bind(toneAnalyzer, { text: text })
+    toneAnalyzer.tone.bind(toneAnalyzer, { text: text, tones: 'emotion', sentences: 'false'} )
   ];
 }
 
@@ -68,6 +68,17 @@ module.exports = function processTweet(tweet, callback) {
     if (error) {
       callback(error);
     } else {
+    	  //    console.log("tweet processing response 1.0", JSON.stringify(response[1][0]));
+      	   //   console.log("tweet intent in response 0.0", JSON.stringify(response[0][0]));
+      	   //   console.log("All Response returned ", JSON.stringify(response));
+      	  //    console.log("tweet processing response[1][0].document_tone.tone_categories[0].tones", JSON.stringify(response[1][0].document_tone.tone_categories[0].tones));
+	  var tonesentiment = response[1][0].document_tone.tone_categories[0].tones;
+    tonesentiment.sort(function(a, b){return a.score - b.score});
+        tonesentiment.reverse();
+      	      console.log("tonesentiment: ", JSON.stringify(tonesentiment));
+    var tonesentimentStr = tonesentiment[0].tone_name;
+    console.log("tonesentimentStr: ", tonesentimentStr);
+	//  tone.document_tone.tone_categories[x].tones[y].tone_name.
       var intent = response[0][0].top_class;
       var classes = response[0][0].classes.map(function(e){
         return e.class_name;
@@ -75,13 +86,16 @@ module.exports = function processTweet(tweet, callback) {
 
       var result = {
         tweet: tweet,
-        alchemy_language: response[1],
-        tone_analyzer: response[2][0],
+        //alchemy_language: response[1],
+        //tone_analyzer: response[2][0],
+        tone_analyzer: response[1][0],
+        sentiment: tonesentimentStr,
         classifier: extend({ classes: classes }, response[0][0].classes[0]),
         response: {
-          text: responses[intent],
-          name: 'Watson',
-          screen_name: 'WatsonSupport'
+         // text: responses[intent],
+         text: tonesentiment,
+          name: 'Openjaw Airways',
+          screen_name: 'ojairways'
         }
       };
       callback(null, result);

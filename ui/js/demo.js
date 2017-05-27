@@ -62,7 +62,7 @@ $(document).ready(function() {
     $('.js-loading-screen').hide();
 
     var filters = [
-      addTweetToFilter(FILTERS[0].title_id, message.sentiment, FILTERS[0].filters),
+      addTweetToFilter(FILTERS[0].title_id, "message.sentiment", FILTERS[0].filters),
       addTweetToFilter(FILTERS[1].title_id, message.classifier.class_name, FILTERS[1].filters)
     ];
 

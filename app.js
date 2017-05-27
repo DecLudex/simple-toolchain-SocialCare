@@ -52,9 +52,12 @@ app.get('/api/profile', function(req, res, next) {
     }
     personalityInsights.profile({ contentItems:tweets }, function (perror, profile) {
       if (error) {
+      	 console.log("tweet personalityInsights error: ",error);
         return next(perror);
       }
+
       var processedProfile = processProfile(profile);
+           console.log("tweet personalityInsights processedProfile: ",JSON.stringify(processedProfile)); 
       profileByUser[req.query.username] = processedProfile;
       res.json(processedProfile);
     });

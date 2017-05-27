@@ -42,6 +42,8 @@ module.exports = function(io, twitter) {
           }
           Object.keys(sessions).forEach(function(id) {
             sessions[id].socket.emit('message', processedTweet);
+		    console.log("processedTweet Socket",JSON.stringify(processedTweet));
+
           });
         })
       });
@@ -68,10 +70,12 @@ module.exports = function(io, twitter) {
   io.on('connection', function(socket) {
     preloadedTweets.forEach(function(tweet){
       socket.emit('message', tweet);
+         		    console.log("tweet connection Socket",JSON.stringify(tweet));
     });
     socket.on('message', function() {
       // send initial tweets
       socket.emit('message', 'hello!');
+            		    console.log("initial tweet Socket");
     });
 
     // Delete the session on disconnect

@@ -29,13 +29,18 @@
       </div>
       <div class="watson-tweet--tweet">
         <div class="watson-tweet--profile">
-          <a class="base--a watson-tweet--username" href="https://ibm.com/watson"><%= message.response.screen_name %></a> <span class="watson-tweet--handle">@<%= message.response.screen_name %></span>
+          <a class="base--a watson-tweet--username" href="http://www.openjawtech.com/"><%= message.response.screen_name %></a> <span class="watson-tweet--handle">@<%= message.response.screen_name %></span>
         </div>
-        <p class="watson-tweet--message"><%= message.response.text %>
+        <p class="watson-tweet--message">
+              <span class="watson-tweet--message1"><%= message.response.text[0].tone_name %>  <%= message.response.text[0].score.toFixed(2) %></span>
+              <span class="watson-tweet--message2"><%= message.response.text[1].tone_name %>  <%= message.response.text[1].score.toFixed(2) %></span>
+              <span class="watson-tweet--message3"><%= message.response.text[2].tone_name %>  <%= message.response.text[2].score.toFixed(2) %></span>
+              <span class="watson-tweet--message4"><%= message.response.text[3].tone_name %>  <%= message.response.text[3].score.toFixed(2) %></span>
+              <span class="watson-tweet--message5"><%= message.response.text[4].tone_name %>  <%= message.response.text[4].score.toFixed(2) %></span>
         </p>
         <div class="watson-tweet--metadata">
           <div class="watson-tweet--tags">
-            <% _.each(message.classifier.classes.slice(0, 3), function(tag) { %>
+        <%   _.each(message.classifier.classes.slice(0, 3), function(tag) { %>
               <span class="watson-tweet--tag"><%= tag %></span>
             <% });%>
           </div>

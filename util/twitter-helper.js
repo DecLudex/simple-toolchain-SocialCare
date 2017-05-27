@@ -17,7 +17,7 @@
 
 var twitter = require('twitter');
 var debug = require('debug')('scc:twitter-helper')
-var MAX_COUNT = 200;
+var MAX_COUNT = 10;
 
 /**
  * Transform Tweets to ContentItems to be used
