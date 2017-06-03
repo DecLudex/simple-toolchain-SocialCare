@@ -28,8 +28,8 @@ module.exports = {
     access_token_key: '852549147651702785-3PpQjln2cs72JP3CMbQMkzIcY1AlzFA',
     access_token_secret: 'tWDTElqz2gYQVPVBEZf73YHEcIGwZHeiRIKS8VMv0m4Ow'
   }]),
-  TWITTER_TOPIC: '@ludex_ai',
-  CLASSIFIER_ID: ' CLASSIFIER ID',
+  TWITTER_TOPIC: '@ojairways',
+  CLASSIFIER_ID: '90e7acx197-nlc-48049',
   ALCHEMY_API_KEY: 'ALCHEMY KEY',
   DEBUG: 'scc:*'
 };
